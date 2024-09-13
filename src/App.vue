@@ -1,25 +1,27 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink } from 'vue-router'
 </script>
 
 <template>
   <div id="app">
+    <!-- Topbar Navigation -->
     <nav class="topbar">
       <router-link to="/" class="nav-link">Home</router-link>
       <img src="./assets/logoPlaceholder.png" alt="Site Logo" class="site-logo" />
       <router-link to="/about" class="nav-link">About</router-link>
     </nav>
 
-    <router-view />
-
+    <!-- Main Content Area -->
     <div class="main-content">
+      <!-- Video Section -->
       <div class="video-section">
-        <video controls>
-          <source src="./assets/logoPlaceholder.png.mp4" type="video/mp4" />
+        <video controls class="video-controls">
+          <source src="./assets/rickRoll.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
 
+      <!-- Two Columns Layout -->
       <div class="content-columns">
         <!-- Left Column -->
         <div class="left-column">
@@ -66,9 +68,6 @@ import { RouterLink, RouterView } from 'vue-router'
   align-items: center;
   background-color: #8c6e44;
   padding: 16px;
-  height: 80px; /* Set a fixed height for the topbar */
-  width: 100%;  /* Ensure it takes up the full width */
-  box-sizing: border-box; /* Ensures padding doesn't affect width */
 }
 
 .nav-link {
@@ -82,7 +81,6 @@ import { RouterLink, RouterView } from 'vue-router'
   height: 80px;
   margin-top: -16px;
   margin-bottom: -16px;
-  object-fit: contain; /* Ensure the logo doesn't stretch */
 }
 
 /* Main content area */
