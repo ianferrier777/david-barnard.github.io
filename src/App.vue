@@ -1,85 +1,127 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <div id="app">
+    <nav class="topbar">
+      <router-link to="/" class="nav-link">Home</router-link>
+      <img src="./assets/logoPlaceholder.png" alt="Site Logo" class="site-logo" />
+      <router-link to="/about" class="nav-link">About</router-link>
+    </nav>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <router-view />
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+    <div class="main-content">
+      <div class="video-section">
+        <video controls>
+          <source src="./assets/logoPlaceholder.png.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="content-columns">
+        <!-- Left Column -->
+        <div class="left-column">
+          <img src="./assets/david1.png" alt="Image" class="image-content" />
+          <div class="cta-section">
+            <h3>Call to Action</h3>
+            <p>Contact us at info@example.com</p>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+          <img src="./assets/projectPlaceholder.png" alt="Upcoming Project" class="project-image" />
+          <div class="project-description">
+            <h3>Upcoming Project</h3>
+            <p>Description of the upcoming project...</p>
+          </div>
+          <div class="upcoming-shows">
+            <h3>Upcoming Shows</h3>
+            <ul>
+              <li>Show 1 - Date & Venue</li>
+              <li>Show 2 - Date & Venue</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-  </header>
-
-  <RouterView />
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+/* Background for old paper */
+#app {
+  background-color: #f4ecd8;
+  background-image: url('/path-to-old-paper-background.jpg');
+  background-size: cover;
+  min-height: 100vh;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+/* Topbar Navigation */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #8c6e44;
+  padding: 16px;
+  height: 80px; /* Set a fixed height for the topbar */
+  width: 100%;  /* Ensure it takes up the full width */
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
 }
 
-nav {
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 0 16px;
+}
+
+.site-logo {
+  height: 80px;
+  margin-top: -16px;
+  margin-bottom: -16px;
+  object-fit: contain; /* Ensure the logo doesn't stretch */
+}
+
+/* Main content area */
+.main-content {
+  padding: 16px;
+}
+
+.video-section {
+  padding: 32px;
+}
+
+@media (max-width: 680px) {
+  .video-section {
+    padding: 16px;
+  }
+}
+
+.content-columns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-column, .right-column {
+  flex: 1;
+  padding: 16px;
+}
+
+.image-content {
   width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+  height: auto;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+/* Style for Call to Action and Upcoming Projects */
+.cta-section, .project-description, .upcoming-shows {
+  margin-top: 16px;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.upcoming-shows ul {
+  list-style: none;
+  padding: 0;
 }
 </style>
