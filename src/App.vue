@@ -1,50 +1,69 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
+import * as loremIpsum from './data/loremIpsum'
 </script>
 
 <template>
-  <div id="app">
-    <!-- Topbar Navigation -->
-    <nav class="topbar">
-      <router-link to="/" class="nav-link">Home</router-link>
-      <img src="./assets/logoPlaceholder.png" alt="Site Logo" class="site-logo" />
-      <router-link to="/about" class="nav-link">About</router-link>
+  <div class="app-container">
+    <nav class="navigation">
+      <a>Home</a>
+      <a class="topbar-logo-wrapper">
+        <img class="topbar-logo" src="./assets/logoPlaceholder.png" />
+      </a>
+      <a>About</a>
     </nav>
 
-    <!-- Main Content Area -->
-    <div class="main-content">
-      <!-- Video Section -->
-      <div class="video-section">
-        <video controls class="video-controls">
-          <source src="./assets/rickRoll.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+    <div class="video-section">
+      <video autoplay muted loop>
+        <source src="./assets/rickRoll.mp4" type="video/mp4" />
+        There was an issue loading the video.
+      </video>
+    </div>
 
-      <!-- Two Columns Layout -->
-      <div class="content-columns">
-        <!-- Left Column -->
-        <div class="left-column">
-          <img src="./assets/david1.png" alt="Image" class="image-content" />
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <img src="./assets/david1.png" alt="David" class="image-content" />
           <div class="cta-section">
-            <h3>Call to Action</h3>
+            <h2>Call to Action</h2>
+            <ul>
+              <li>Volunteer: www.signyourlifeaway.com</li>
+              <li>Join our community: www.thisisyourlifenow.com</li>
+            </ul>
+            <h2>Contact</h2>
             <p>Contact us at info@example.com</p>
           </div>
         </div>
-
-        <!-- Right Column -->
-        <div class="right-column">
+        <div class="column">
           <img src="./assets/projectPlaceholder.png" alt="Upcoming Project" class="project-image" />
           <div class="project-description">
-            <h3>Upcoming Project</h3>
-            <p>Description of the upcoming project...</p>
+            <h2>Upcoming Project</h2>
+            <p>
+              Lorem ipsum odor amet, consectetuer adipiscing elit. Nisi ultrices felis nullam nisi;
+              integer rhoncus ridiculus. Varius habitant netus pulvinar hendrerit semper platea
+              euismod purus. Gravida dignissim suscipit vivamus; placerat bibendum rhoncus vulputate
+              aptent. Dis nibh mus phasellus ipsum placerat. Facilisis litora etiam pulvinar nostra
+              integer curabitur nullam. Blandit facilisis augue urna ornare adipiscing. Hac taciti
+              torquent dolor magna condimentum. Justo potenti habitasse tortor condimentum maecenas
+              congue velit duis.
+            </p>
           </div>
           <div class="upcoming-shows">
-            <h3>Upcoming Shows</h3>
-            <ul>
-              <li>Show 1 - Date & Venue</li>
-              <li>Show 2 - Date & Venue</li>
-            </ul>
+            <h2>Upcoming Shows</h2>
+            <p>Show - Date & Venue</p>
+            <p>Show - Date & Venue</p>
+            <p>Show - Date & Venue</p>
+            <p>Show - Date & Venue</p>
+            <p>Show - Date & Venue</p>
+            <p>Show - Date & Venue</p>
+            <p>Show - Date & Venue</p>
+            <p>Show - Date & Venue</p>
+            <p>Show - Date & Venue</p>
+            <p>Show - Date & Venue</p>
+            <p>Show - Date & Venue</p>
+            <p>Show - Date & Venue</p>
+            <p>Show - Date & Venue</p>
+            <p>Show - Date & Venue</p>
+            <p>Show - Date & Venue</p>
           </div>
         </div>
       </div>
@@ -53,73 +72,123 @@ import { RouterLink } from 'vue-router'
 </template>
 
 <style scoped>
-/* Background for old paper */
-#app {
-  background-color: #f4ecd8;
-  background-image: url('/path-to-old-paper-background.jpg');
-  background-size: cover;
-  min-height: 100vh;
+.app-container {
+  margin: 32px;
+  background-color: rgba(250, 243, 229, 0.6);
+  border-radius: 50px;
+}
+.container {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-right: 32px;
+  padding-left: 32px;
+  box-sizing: border-box; /* Ensure padding is included in total width/height */
 }
 
-/* Topbar Navigation */
-.topbar {
+.navigation {
+  height: 60px; /* Adjust height as needed */
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  background-color: #8c6e44;
-  padding: 16px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+  backdrop-filter: blur(10px); /* Glossy effect */
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000; /* Ensure it stays above other content */
+  width: 100%;
+  border-radius: 5px;
+  gap: 32px;
 }
 
-.nav-link {
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 18px;
-  padding: 0 16px;
+.topbar-logo-wrapper {
+  display: flex;
+  justify-content: center;
+  /* width: 10%; */
 }
 
-.site-logo {
-  height: 80px;
-  margin-top: -16px;
-  margin-bottom: -16px;
-}
-
-/* Main content area */
-.main-content {
-  padding: 16px;
+.topbar-logo {
+  /* width: 10%; */
+  width: 20%;
+  border-radius: 20px;
 }
 
 .video-section {
+  width: 100vw;
+  margin: -32px;
+  height: calc(100vh - 60px - 200px); /* Deduct height of topbar and bottom sections */
+  overflow: hidden;
+  padding-top: 60px;
+}
+
+.video-section video {
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+}
+
+.columns {
+  display: flex;
+  gap: 32px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 50%;
   padding: 32px;
 }
 
-@media (max-width: 680px) {
-  .video-section {
-    padding: 16px;
-  }
-}
-
-.content-columns {
-  display: flex;
-  justify-content: space-between;
-}
-
-.left-column, .right-column {
-  flex: 1;
-  padding: 16px;
-}
-
 .image-content {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 8px;
   width: 100%;
-  height: auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Style for Call to Action and Upcoming Projects */
-.cta-section, .project-description, .upcoming-shows {
-  margin-top: 16px;
+.cta-section {
+  border-top-left-radius: 50px;
+  border-top-right-radius: 100px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 16px;
+  background-color: rgba(236, 250, 229, 0.7);
+  /* border-radius: 5px; */
+  box-shadow: -1px 5px 2.5px rgba(0, 0, 0, 0.02);
 }
 
-.upcoming-shows ul {
-  list-style: none;
-  padding: 0;
+.project-image {
+  width: 50%;
+  border-radius: 40px;
+}
+
+.project-description {
+  border-top-left-radius: 125px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  text-align: right;
+  margin-left: 25%;
+  padding: 16px;
+  background-color: rgba(236, 250, 229, 0.7);
+  box-shadow: 3px -3px 2.5px rgba(0, 0, 0, 0.02);
+}
+
+.upcoming-shows {
+  border-top-left-radius: 150px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  text-align: right;
+  padding: 16px;
+  background-color: rgba(236, 250, 229, 0.7);
+  width: 60%;
+  margin-left: 10%;
+  box-shadow: 5px 5px 2.5px rgba(0, 0, 0, 0.02);
 }
 </style>
