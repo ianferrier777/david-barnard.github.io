@@ -10,8 +10,7 @@
   "bugs": {
     "url": "https://github.com/ianferrier777/david-site/issues"
   },
-  "homepage": "https://github.com/ianferrier777/david-site#readme",
-  "private": true,
+  "homepage": "https://ianferrier777.github.io/david-barnard.github.io/",
   "type": "module",
   "scripts": {
     "dev": "vite",
