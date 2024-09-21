@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import * as loremIpsum from './data/loremIpsum'
-</script>
-
 <template>
   <div class="app-container">
     <nav class="navigation">
@@ -49,27 +45,21 @@ import * as loremIpsum from './data/loremIpsum'
           </div>
           <div class="upcoming-shows">
             <h2>Upcoming Shows</h2>
-            <p>Show - Date & Venue</p>
-            <p>Show - Date & Venue</p>
-            <p>Show - Date & Venue</p>
-            <p>Show - Date & Venue</p>
-            <p>Show - Date & Venue</p>
-            <p>Show - Date & Venue</p>
-            <p>Show - Date & Venue</p>
-            <p>Show - Date & Venue</p>
-            <p>Show - Date & Venue</p>
-            <p>Show - Date & Venue</p>
-            <p>Show - Date & Venue</p>
-            <p>Show - Date & Venue</p>
-            <p>Show - Date & Venue</p>
-            <p>Show - Date & Venue</p>
-            <p>Show - Date & Venue</p>
+            <ul class="no-bullets">
+              <li v-for="(show, index) in shows" :key="index">Show - Date & Venue</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const shows = ref([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])
+</script>
 
 <style scoped>
 .app-container {
@@ -190,5 +180,10 @@ import * as loremIpsum from './data/loremIpsum'
   width: 60%;
   margin-left: 10%;
   box-shadow: 5px 5px 2.5px rgba(0, 0, 0, 0.02);
+}
+
+.no-bullets {
+  list-style-type: none;
+  padding-left: 0;
 }
 </style>
